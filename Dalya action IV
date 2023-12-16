@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>My First JavaScript</h2>
+
+<button type="button"
+onclick="document.getElementById('demo').innerHTML = Date()">
+Click me to display Date and Time.</button>
+
+<p id="demo"></p>
+
+</body>
+</html> 
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <title>CelSci</title>
+</head>
+
+<body>
+  <script>
+    const celscilist = {
+      'dd': { 'info': { 'views': 600 } },
+      'jp': { 'info': { 'views': 400 } },
+      'cynthia': { 'info': { 'views': 700 } }, // Cynthia Breazeal
+      // Add more entries as needed
+    };
+
+    class Celsci {
+      static iscelsci(x) {
+        // Use a boolean value directly, no need to convert to string
+        return x > 500;
+      }
+    }
+
+    function checkcelsci(x) {
+      const result = Celsci.iscelsci(celscilist[x]?.info?.views || 0); // Use optional chaining
+      return result;
+    }
+
+    // Use console.log for output instead of document.write
+    console.log(checkcelsci('dd'));
+    console.log(checkcelsci('cynthia breazeal')); // Testing Cynthia Breazeal
+  </script>
+</body>
+</html>
