@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <title>CelSci</title>
+</head>
+
+<body>
+  <script>
+    const celscilist = {
+      'Cynthia Breazeal': { 'info': { 'views': /* 245975*/ } },
+      'classmate1': { 'info': { 'views': /* Replace with actual views */ } },
+      'classmate2': { 'info': { 'views': /* Replace with actual views */ } },
+      // Add more entries as needed
+    };
+
+    // Calculate average views using a for loop
+    let sumOfViews = 0;
+    let count = 0;
+
+    for (const key in celscilist) {
+      if (celscilist.hasOwnProperty(key)) {
+        const views = celscilist[key].info.views;
+        sumOfViews += views;
+        count++;
+      }
+    }
+
+    const averageViews = sumOfViews / count;
+
+    class Celsci {
+      static iscelsci(x) {
+        // Use a boolean value directly, no need to convert to string
+        return x > averageViews;
+      }
+    }
+
+    function checkcelsci(x) {
+      const result = Celsci.iscelsci(celscilist[x]?.info?.views || 0); // Use optional chaining
+      return result;
+    }
+
+    // Use console.log for output instead of document.write
+    console.log(checkcelsci('yourYouTubeSpeaker')); // Testing your YouTube speaker
+  </script>
+</body>
+</html>
