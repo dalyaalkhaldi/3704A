@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <title>CelSciMax</title>
+</head>
+
+<body>
+  <script>
+    const celscilist = {
+      'NeilDeGrasseTyson': { 'info': { 'views': 1000000 } },
+      'BillNye': { 'info': { 'views': 900000 } },
+      'JaneGoodall': { 'info': { 'views': 800000 } },
+      'CarlSagan': { 'info': { 'views': 750000 } },
+      'RichardFeynman': { 'info': { 'views': 700000 } },
+      // Add more entries as needed
+    };
+
+    // Extract 'views' values into an array
+    const viewsArray = Object.values(celscilist).map(item => item.info.views);
+
+    // Calculate the sum of 'views' values
+    function calculateAverage(viewsArray) {
+      const sum = viewsArray.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+      return sum / viewsArray.length;
+    }
+
+    class Celsci {
+      static iscelsci(x) {
+        // Use a boolean value directly, no need to convert to string
+        return x > calculateAverage(viewsArray);
+      }
+    }
+
+    function checkcelsci(x) {
+      const result = Celsci.iscelsci(celscilist[x]?.info?.views || 0); // Use optional chaining
+      return result;
+    }
+
+    // Get the max value from the array
+    const maxViews = Math.max(...viewsArray);
+
+    function findKeyByViews(obj, viewsValue) {
+      return Object.keys(obj).find(key => obj[key].info.views === viewsValue);
+    }
+
+    // Call the function with data and maxViews as arguments
+    let no1 = findKeyByViews(celscilist, maxViews);
+
+    document.write("Is NeilDeGrasseTyson above average? ", checkcelsci('NeilDeGrasseTyson'), " #1 is: ", no1, " with view counts of ", maxViews);
+  </script>
+</body>
+</html>
